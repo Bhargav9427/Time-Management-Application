@@ -1,0 +1,5 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/time-management-frontend-node-app/node_modules
+
