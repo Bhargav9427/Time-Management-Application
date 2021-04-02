@@ -83,8 +83,9 @@ public class AuthController {
     //encrypt the password and set it o user object
     user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-    //set the default role to 'ROLE_USER'
-    Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+    //set the role. If no role is set then consider Role user as default.
+    RoleName role = isEmpty(signUpRequest.getRole()) ? RoleName.ROLE_USER : RoleName.valueOf(signUpRequest.getRole());
+    Role userRole = roleRepository.findByName(role)
         .orElseThrow(() -> new AppException("User Role not set."));
 
     user.setRoles(Collections.singleton(userRole));
@@ -97,5 +98,9 @@ public class AuthController {
         .buildAndExpand(result.getUsername()).toUri();
 
     return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
+  }
+
+  private boolean isEmpty(String role) {
+    return role == null || role.trim().equals("");
   }
 }

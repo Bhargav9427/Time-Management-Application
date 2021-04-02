@@ -13,6 +13,7 @@ import LoadingIndicator from './helper/LoadingIndicator';
 import NoDataComponent from './components/NoDataComponent';
 import AddUpdateWorklog from './components/AddUpdateWorklog';
 import SettingsComponent from './components/SettingsComponent';
+import AddUser from './components/AddUser';
 
 
 const { Content } = Layout;
@@ -136,6 +137,9 @@ class App extends Component {
                   user={this.state.currentUser} handleUpdate={this.handleUpdate} {...props}/>}>
               </Route>
               <Route path="/displayUsers" render={(props) => <DisplayUsers isAuthenticated={this.state.isAuthenticated}
+                  currentUser={this.state.currentUser} {...props}/>}>
+              </Route>
+              <Route path="/addUser" render={(props) => <AddUser isAuthenticated={this.state.isAuthenticated}
                   currentUser={this.state.currentUser} {...props}/>}>
               </Route>
             </Switch>

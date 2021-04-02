@@ -21,7 +21,9 @@ class DisplayUsers extends Component {
             });
     }
     addUser() {
-
+        this.props.history.push({
+            pathname: '/addUser'
+        })
     }
 
     updateUser(user) {

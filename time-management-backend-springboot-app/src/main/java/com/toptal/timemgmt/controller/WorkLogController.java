@@ -64,7 +64,7 @@ public class WorkLogController {
       for (Work log : workRepository.findAll()) {
         WorkLogResponse response = new WorkLogResponse(log.getWorkId(), log.getNotes(),
             log.getWorkingDate(),
-            log.getWorkingHours(), log.getUser().getId());
+            log.getWorkingHours(), log.getUser().getId(), log.getUser().getUsername());
         data.add(response);
       }
     } else {
@@ -107,7 +107,7 @@ public class WorkLogController {
     Work singleWork = workRepository.findById(workId)
         .orElseThrow(() -> new ResourceNotFoundException("", "", ""));
     WorkLogResponse response = new WorkLogResponse(singleWork.getWorkId(), singleWork.getNotes(),
-        singleWork.getWorkingDate(), singleWork.getWorkingHours(), singleWork.getUser().getId());
+        singleWork.getWorkingDate(), singleWork.getWorkingHours(), singleWork.getUser().getId(), singleWork.getUser().getUsername());
     return ResponseEntity.ok(response);
   }
 

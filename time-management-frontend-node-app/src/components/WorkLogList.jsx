@@ -123,20 +123,21 @@ class WorkLogList extends Component {
             <div>
                 <div className="row" style={{ marginTop: '100px' }}>
                     <button className="btn btn-primary" onClick={this.addWorkLog}>Add WorkLog</button>
-
-                    <button className="btn btn-primary" onClick={this.filterRecords} style={{ marginLeft: '350px', marginRight: '40px' }}>Filter Records</button>
+                    <button className="btn btn-primary" onClick={this.resetFilter} style={{ marginLeft: '360px', marginRight: '30px' }}>Reset Filter</button>
+                    
                     <RangePicker
                         format={dateFormat}
                         onChange={this.onChangeDates}
                     //defaultValue={[moment(this.state.rangeStart, dateFormat), moment(this.state.rangeEnd, dateFormat)]}
                     />
-                    <button className="btn btn-primary" onClick={this.resetFilter} style={{ marginLeft: '40px' }}>Reset Filter</button>
+                    <button className="btn btn-primary" onClick={this.filterRecords} style={{ marginLeft: '40px' }}>Filter Records</button>
 
                 </div>
                 <div className="row">
                     <table className="table table-bordered">
                         <thead>
                             <tr>
+                                <th>User Name</th>
                                 <th>Work Notes</th>
                                 <th>Worked Hours</th>
                                 <th>Working Date</th>
@@ -150,6 +151,7 @@ class WorkLogList extends Component {
                                     workLog =>
 
                                         <tr key={workLog.id} className={`${workLog.red ? "displayred" : "displaygreen"}`}>
+                                            <td>{workLog.userName}</td>
                                             <td>{workLog.notes}</td>
                                             <td>{workLog.workingTime}</td>
                                             <td>{workLog.workingDate}</td>

@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WorkRepository extends JpaRepository<Work, Long> {
 
-  @Query("select new com.toptal.timemgmt.payloads.WorkLogResponse(w.id, w.notes, w.workingDate, w.workingHours, w.user.id) from Work w where w.user.id = :user_id")
+  @Query("select new com.toptal.timemgmt.payloads.WorkLogResponse(w.id, w.notes, w.workingDate, w.workingHours, w.user.id, w.user.username) from Work w where w.user.id = :user_id")
   List<WorkLogResponse> findByUserId(@Param("user_id") Long UserID);
 }

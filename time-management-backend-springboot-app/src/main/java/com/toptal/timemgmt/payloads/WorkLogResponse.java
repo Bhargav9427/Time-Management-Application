@@ -10,13 +10,15 @@ public class WorkLogResponse {
   private Date workingDate;
   private Long userId;
   private boolean isRed = false;
+  private String userName;
 
-  public WorkLogResponse(Long id, String notes, Date workingDate, Integer workingTime, Long userId) {
+  public WorkLogResponse(Long id, String notes, Date workingDate, Integer workingTime, Long userId, String userName) {
     this.id = id;
     this.notes = notes;
     this.workingTime = workingTime;
     this.workingDate = workingDate;
     this.userId = userId;
+    this.userName = userName;
   }
 
   public WorkLogResponse() {
@@ -68,5 +70,17 @@ public class WorkLogResponse {
 
   public void setRed(boolean red) {
     isRed = red;
+  }
+
+  public boolean isRed() {
+    return isRed;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 }
